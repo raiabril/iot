@@ -6,8 +6,16 @@ Created on Sun Aug 13 19:59:08 2017
 @author: raimundoabrillopez
 """
 
+import os
+import pandas as pd
+
+PATH = '/Volumes/Macintosh HD/_Drive/_data'
+os.chdir(PATH)
+dirlist = os.listdir()
+
 # Conversion
 data = pd.read_json(name+'.json',encoding='utf-8')
+
 data['% BioEtanol']=pd.to_numeric(data['% BioEtanol'].str.replace(',','.'), errors='coerce')
 data['% Éster metílico']=pd.to_numeric(data['% Éster metílico'].str.replace(',','.'), errors='coerce')
 data['Latitud']=pd.to_numeric(data['Latitud'].str.replace(',','.'), errors='coerce')
