@@ -28,19 +28,18 @@ sample = True
 
 while sample:
     r = requests.get(url)
-    if sample == r.ok:
+    if len(r.text) > 1000:
         sample = False
 r.close()
+
+json_data = r.json()
+json_string = json.dumps(json_data['ListaEESSPrecio'], ensure_ascii=False)
+
+with open(name+'.json', 'w', encoding='utf-8') as outfile:
+#    json.dump(json_data,outfile,ensure_ascii=False)
+    outfile.write(json_string)
     
-print('Fuera')
-#json_data = r.json()
-#json_string = json.dumps(json_data['ListaEESSPrecio'], ensure_ascii=False)
-#
-#with open(name+'.json', 'w', encoding='utf-8') as outfile:
-##    json.dump(json_data,outfile,ensure_ascii=False)
-#    outfile.write(json_string)
-#    
-#outfile.close()
+outfile.close()
 
 
 
