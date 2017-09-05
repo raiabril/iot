@@ -13,14 +13,13 @@ import pandas as pd
 PATH = '/home/pi/logs/gasolineras'
 os.chdir(PATH)
 
-files = os.listdir().sort()
+files = os.listdir()
+files.sort()
 dataList = []
 
 for file in files:
-    print('Transforming: ',file)
     data = pd.read_json(file)
     data['DATE'] = datetime.datetime.strptime(file.split('.')[0].split('_')[1]+' '+file.split('.')[0].split('_')[2].replace('-',':'), '%Y-%m-%d %H:%M')
-    dataList.append(data)
     
 data = pd.concat(dataList)
 data['% BioEtanol']=data['% BioEtanol'].str.replace(',','.').astype(float)
