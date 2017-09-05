@@ -8,9 +8,8 @@ Created on Fri Aug 11 20:47:30 2017
 
 import os
 import datetime
-import pandas as pd
 
-PATH = '/Volumes/Macintosh HD/_Drive/_data'
+PATH = '/home/pi/logs/gasolineras'
 os.chdir(PATH)
     
 name = 'gasolineras_'+datetime.datetime.now().date().__str__()+'_'+datetime.datetime.now().hour.__str__().zfill(2)+'-'+datetime.datetime.now().minute.__str__().zfill(2)
@@ -35,8 +34,6 @@ with open(name+'.json', 'w', encoding='utf-8') as outfile:
     outfile.write(json_string)
     
 outfile.close()
-
-
 
 
 
