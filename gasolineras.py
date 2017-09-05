@@ -72,4 +72,3 @@ data.to_csv(file.replace('.json','.csv'), encoding='utf-8')
 
 
 
-
