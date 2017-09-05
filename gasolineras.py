@@ -43,6 +43,7 @@ files.sort()
 file = files[-1]
 
 data = pd.read_json(file)
+os.remove(file)
 data['DATE'] = datetime.datetime.strptime(file.split('.')[0].split('_')[1]+' '+file.split('.')[0].split('_')[2].replace('-',':'), '%Y-%m-%d %H:%M')
 data['% BioEtanol']=data['% BioEtanol'].str.replace(',','.').astype(float)
 data['% Éster metílico']=data['% Éster metílico'].str.replace(',','.').astype(float)
@@ -61,6 +62,9 @@ data['Precio Nuevo Gasoleo A']=data['Precio Nuevo Gasoleo A'].str.replace(',','.
 
 PATH = '/home/pi/logs/gasolineras_csv'
 os.chdir(PATH)
+data.set_index('DATE',drop=True, inplace = True)
+data.index.name = 'DATE'
+data.columns=['BioEtanol_percent', 'Ester metilico_percent', 'CP', 'Direccion', 'Horario', 'IDCCAA', 'IDEESS', 'IDMunicipio', 'IDProvincia', 'Latitud', 'Localidad', 'Longitud (WGS84)', 'Margen', 'Municipio', 'Precio Biodiesel', 'Precio Bioetanol', 'Precio Gas Natural Comprimido', 'Precio Gas Natural Licuado', 'Precio Gases licuados del petroleo', 'Precio Gasoleo A', 'Precio Gasoleo B', 'Precio Gasolina  98', 'Precio Gasolina 95 Proteccion', 'Precio Nuevo Gasoleo A', 'Provincia', 'Remision', 'Rotulo', 'Tipo Venta']
 data.to_csv(file.replace('.json','.csv'), encoding='utf-8')
 
 
