@@ -7,7 +7,7 @@ Created on Fri Aug 11 12:05:53 2017
 
 import pandas as pd
 import os
-os.chdir('/home/pi/logs')
+os.chdir('/home/pi/logs/amazon_logs')
 
 import matplotlib.pyplot as plt
 matplotlib.style.use('ggplot')

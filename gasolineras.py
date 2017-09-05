@@ -11,12 +11,7 @@ import datetime
 import pandas as pd
 
 PATH = '/Volumes/Macintosh HD/_Drive/_data'
-
-try:
-    os.chdir(PATH)
-except:
-        PATH = '/home/pi/logs/gasolineras'
-        os.chdir(PATH)
+os.chdir(PATH)
     
 name = 'gasolineras_'+datetime.datetime.now().date().__str__()+'_'+datetime.datetime.now().hour.__str__().zfill(2)+'-'+datetime.datetime.now().minute.__str__().zfill(2)
 url = 'https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/'
@@ -33,14 +28,14 @@ while sample:
 r.close()
     
 print('Fuera')
-#json_data = r.json()
-#json_string = json.dumps(json_data['ListaEESSPrecio'], ensure_ascii=False)
-#
-#with open(name+'.json', 'w', encoding='utf-8') as outfile:
-##    json.dump(json_data,outfile,ensure_ascii=False)
-#    outfile.write(json_string)
-#    
-#outfile.close()
+json_data = r.json()
+json_string = json.dumps(json_data['ListaEESSPrecio'], ensure_ascii=False)
+
+with open(name+'.json', 'w', encoding='utf-8') as outfile:
+#    json.dump(json_data,outfile,ensure_ascii=False)
+    outfile.write(json_string)
+    
+outfile.close()
 
 
 
