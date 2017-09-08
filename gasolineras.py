@@ -10,7 +10,7 @@ import os
 import datetime
 import pandas as pd
 
-PATH = '/home/pi/logs/temp'
+PATH = '/media/pi/RAI/logs/temp'
 os.chdir(PATH)
     
 name = 'gasolineras_'+datetime.datetime.now().date().__str__()+'_'+datetime.datetime.now().hour.__str__().zfill(2)+'-'+datetime.datetime.now().minute.__str__().zfill(2)
@@ -35,7 +35,7 @@ with open(name+'.json', 'w', encoding='utf-8') as outfile:
     
 outfile.close()
 
-PATH = '/home/pi/logs/temp'
+PATH = '/media/pi/RAI/logs/temp'
 os.chdir(PATH)
 
 files = os.listdir()
@@ -60,7 +60,7 @@ data['Precio Gasolina  98']=data['Precio Gasolina  98'].str.replace(',','.').ast
 data['Precio Gasolina 95 Protección']=data['Precio Gasolina 95 Protección'].str.replace(',','.').astype(float)
 data['Precio Nuevo Gasoleo A']=data['Precio Nuevo Gasoleo A'].str.replace(',','.').astype(float)
 
-PATH = '/home/pi/logs/gasolineras'
+PATH = '/media/pi/RAI/logs/gasolineras'
 os.chdir(PATH)
 data.set_index('DATE',drop=True, inplace = True)
 data.index.name = 'DATE'
