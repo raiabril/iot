@@ -12,7 +12,7 @@ import datetime
 PATH = '/media/pi/RAI/logs/bitcoin'
 os.chdir(PATH)
 
-name = 'bitcoin_'+datetime.datetime.now().date().__str__()+'_'+datetime.datetime.now().hour.__str__().zfill(2)+'-'+datetime.datetime.now().minute.__str__().zfill(2)
+name = 'coindesk_'+datetime.datetime.now().date().__str__()+'_'+datetime.datetime.now().hour.__str__().zfill(2)+'-'+datetime.datetime.now().minute.__str__().zfill(2)
 url = 'https://api.coindesk.com/v1/bpi/currentprice/EUR.json'
 
 import requests
