@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DB_USER='root';
-DB_PASSWD='J4v5f7o3';
+DB_PASSWD='ADDPASS';
 
 DB_NAME='mydb';
 TABLE='gas';
